@@ -1693,26 +1693,26 @@ def extractTLSWeaknesses():
                'SSL Certificate Cannot Be Trusted',
                'SSL Certificate Expiry',
                'SSL Self-Signed Certificate',
-               'Certificate chain keys less than 2048 bits in lengt',
-               'NULL ciphers suites accepte',
-               'Anonymous cipher suites accepted',
-               'Weak strength ciphers accepted',
-               'RC4 cipher suites accepted',
-               'Plaintext injection (insecure renegotiation)',
-               'Susceptibility to Heartbleed attack (insufficient patching)',
-               'Susceptibility to CRIME attack (HTTP compression)',
-               'Susceptibility BEAST attack (CBC ciphers)',
-               'Change Cipher Spec Injection (insufficient patching)',
-               'Susceptibility to SSL POODLE attack (SSL 3.0 enabled)',
-               'Susceptibility to TLS POODLE attack (insufficient patching)',
-               'Susceptibility to DROWN attack (SSL 2.0 enabled)',
-               'Susceptibility to FREAK attack (export grade RSA keys)',
+               'Short RSA Key Length',
+               'NULL Cipher Suite Supported',
+               'Anonymous Cipher Suite Supported',
+               'Short Encryption Key Length',
+               'RC4 Cipher Suite Supported',
+               'Insecure Renegotiation',
+               'Susceptibility to Heartbleed',
+               'Susceptibility to CRIME',
+               'Susceptibility to BEAST',
+               'Change Cipher Spec Injection',
+               'Susceptibility to SSL POODLE',
+               'Susceptibility to TLS POODLE',
+               'Susceptibility to DROWN',
+               'Susceptibility to FREAK',
                'OpenSSL Padding Oracle Attack',
-               'Susceptibility to SWEET32 attack (supports 64 bit block ciphers)',
-               'Susceptibility to LOGJAM attack (weak DH key exchange supported)',
+               'Susceptibility to SWEET32',
+               'Susceptibility to LOGJAM',
                'Certificate signed with a weak hashing algorithm',
                'Susceptibility to LUCKY13 attack (supports CBC encryption cipher suites)',
-               'Protocols with known weaknesses allowed']
+               'Obsolete TLS Protocols']
 
     column_widths = [40, 15, 10, 6, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]
     df = pd.DataFrame(columns=columns)
@@ -1721,28 +1721,29 @@ def extractTLSWeaknesses():
     plugins = {'51192': 4,  # 'SSL Certificate Cannot Be Trusted',
                '15901': 5,  # 'SSL Certificate Expiry',
                '57582': 6,  # 'SSL Self-Signed Certificate',
-               '69551': 7,  # 'Certificate chain keys less than 2048 bits in lenght',
-               '66848': 8,  # 'NULL ciphers suites accepted',
-               '31705': 9,  # 'Anonymous cipher suites accepted',
-               '26928': 10,  # 'Weak strength ciphers accepted',
-               '65821': 11,  # 'RC4 cipher suites accepted',
-               '42880': 12,  # 'Plaintext injection (insecure renegotiation)',
-               '73412': 13,  # 'Susceptibility to Heartbleed attack (insufficient patching)',
-               '62565': 14,  # 'Susceptibility to CRIME attack (HTTP compression)',
-               '58751': 15,  # 'Susceptibility BEAST attack (CBC ciphers)',
-               '74326': 16,  # 'Change Cipher Spec Injection (insufficient patching)',
-               '78479': 17,  # 'Susceptibility to SSL POODLE attack (SSL 3.0 enabled)',
-               '80035': 18,  # 'Susceptibility to TLS POODLE attack (insufficient patching)',
-               '89058': 19,  # 'Susceptibility to DROWN attack (SSL 2.0 enabled)',
-               '81606': 20,  # 'Susceptibility to FREAK attack (export grade RSA keys)',
+               '69551': 7,  # 'Certificate chain keys less than 2048 bits in lenght', -> 'Short RSA Key Length'
+               '66848': 8,  # 'NULL ciphers suites accepted', -> 'NULL Cipher Suite Supported'
+               '31705': 9,  # 'Anonymous cipher suites accepted', -> 'Anonymous Cipher Suite Supported'
+               '26928': 10,  # 'Weak strength ciphers accepted', -> 'Short Encryption Key Length'
+               '65821': 11,  # 'RC4 cipher suites accepted', -> 'RC4 Cipher Suite Supported'
+               '42880': 12,  # 'Plaintext injection (insecure renegotiation)', -> 'Insecure Renegotiation'
+               '73412': 13,  # 'Susceptibility to Heartbleed attack (insufficient patching)', -> 'Susceptibility to Heartbleed'
+               '62565': 14,  # 'Susceptibility to CRIME attack (HTTP compression)', -> 'Susceptibility to CRIME'
+               '58751': 15,  # 'Susceptibility BEAST attack (CBC ciphers)', -> 'Susceptibility to BEAST'
+               '74326': 16,  # 'Change Cipher Spec Injection (insufficient patching)', -> 'Change Cipher Spec Injection'
+               '78479': 17,  # 'Susceptibility to SSL POODLE attack (SSL 3.0 enabled)', -> 'Susceptibility to SSL POODLE'
+               '80035': 18,  # 'Susceptibility to TLS POODLE attack (insufficient patching)', -> 'Susceptibility to TLS POODLE'
+               '89058': 19,  # 'Susceptibility to DROWN attack (SSL 2.0 enabled)', -> 'Susceptibility to DROWN'
+               '81606': 20,  # 'Susceptibility to FREAK attack (export grade RSA keys)', -> 'Susceptibility to FREAK'
                '91572': 21,  # 'OpenSSL Padding Oracle Attack',
-               '42873': 22,  # 'Susceptibility to SWEET32 attack (supports 64 bit block ciphers)',
-               '94437': 22,  # 'Susceptibility to SWEET32 attack (supports 64 bit block ciphers)',
-               '83875': 23,  # 'Susceptibility to LOGJAM attack (weak DH key exchange supported)',
+               '42873': 22,  # 'Susceptibility to SWEET32 attack (supports 64 bit block ciphers)', -> Susceptibility to SWEET32
+               '94437': 22,  # 'Susceptibility to SWEET32 attack (supports 64 bit block ciphers)', -> Susceptibility to SWEET32
+               '83875': 23,  # 'Susceptibility to LOGJAM attack (weak DH key exchange supported)', -> Susceptibility to LOGJAM
                '95631': 24,  # 'Certificate signed with a weak hashing algorithm',
                '70544': 25,  # 'Susceptibility to LUCKY13 attack (supports CBC encryption cipher suites)',
-               '20007': 26,  # 'Protocols with known weaknesses allowed',
-               '104743': 26}  # 'Protocols with known weaknesses allowed'
+               '20007': 26,  # 'Protocols with known weaknesses allowed', -> 'Obsolete TLS Protocols',
+               '157288': 26,  # 'Protocols with known weaknesses allowed', -> 'Obsolete TLS Protocols',
+               '104743': 26}  # 'Protocols with known weaknesses allowed' -> 'Obsolete TLS Protocols'
 
     for report_host in nfr.scan.report_hosts(root):
         report_ip = nfr.host.resolved_ip(report_host)
