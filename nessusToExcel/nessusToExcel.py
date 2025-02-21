@@ -47,6 +47,7 @@ import hashlib
 # Credit @ttlsec
 # v1.9 - 15/05/2024 - Improved extractUnencryptedProtocols
 # Credit @lapolis
+# v1.9.1 - 21/02/2025 - Updated TLS issues naming
 
 # STANDARDS
 # Columns order - Hostname / IP Address / Other (Except for hosts which will be in reporter format of IP / Hostname / OS)
@@ -1711,7 +1712,7 @@ def extractTLSWeaknesses():
                'Susceptibility to SWEET32',
                'Susceptibility to LOGJAM',
                'Certificate signed with a weak hashing algorithm',
-               'Susceptibility to LUCKY13 attack (supports CBC encryption cipher suites)',
+               'CBC Cipher Suite Supported',
                'Obsolete TLS Protocols']
 
     column_widths = [40, 15, 10, 6, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]
@@ -1740,7 +1741,7 @@ def extractTLSWeaknesses():
                '94437': 22,  # Susceptibility to SWEET32
                '83875': 23,  # Susceptibility to LOGJAM
                '95631': 24,  # 'Certificate signed with a weak hashing algorithm',
-               '70544': 25,  # 'Susceptibility to LUCKY13 attack (supports CBC encryption cipher suites)',
+               '70544': 25,  # 'CBC Cipher Suite Supported',
                '20007': 26,  # 'Obsolete TLS Protocols',
                '157288': 26,  # 'Obsolete TLS Protocols',
                '104743': 26}  # 'Obsolete TLS Protocols'
